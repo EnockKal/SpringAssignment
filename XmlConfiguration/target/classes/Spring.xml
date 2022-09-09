@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd
+"> <!-- bean definitions here -->
+
+    <bean id="Student" class="org.example.Student" init-method="inIt" destroy-method="destroy">
+        <constructor-arg index="0" value="123"/>
+        <constructor-arg index="1" value="Enock"/>
+        <constructor-arg index="2" ref="list"/>
+        <constructor-arg index="3" ref="Address"/>
+    </bean>
+
+    <bean id="Phone1" class="org.example.Phone">
+        <constructor-arg index="0" value="2034898660"/>
+    </bean>
+
+    <bean id="Phone2" class="org.example.Phone">
+        <constructor-arg index="0" value="2034898662"/>
+    </bean>
+
+    <util:list id="list" value-type="org.example.Phone">
+        <ref bean="Phone1"/>
+        <ref bean="Phone2"/>
+    </util:list>
+
+    <bean id="Address" class="org.example.Address">
+        <constructor-arg name="city" value="Atlanta"/>
+        <constructor-arg name="state" value="Georgia"/>
+        <constructor-arg name="country" value="USA"/>
+        <constructor-arg name="zipcode" value="01101"/>
+    </bean>
+
+</beans>
